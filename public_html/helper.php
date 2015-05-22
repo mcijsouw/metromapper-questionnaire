@@ -4,8 +4,9 @@ class Helper {
 
 	public function renderQuestion($id) {
 		$info = require dirname(__FILE__) . '/maps/' . $id . '/info.php';
-		echo '<div id="map-wrapper">';
-		echo '<img src="/maps/' . $id . '/map.png" class="map">';
+		$mapPath = dirname(__FILE__) . '/maps/' . $id . '/map.png';
+		list($width, $height) = getimagesize($mapPath);
+		echo '<img src="/maps/' . $id . '/map.png" class="map" data-orgwidth="' . $width . '" data-orgheight="' . $height . '">';
 		
 		$start = $info['start'];
 		$start->renderStart();
@@ -17,11 +18,12 @@ class Helper {
 			$point->renderIntersection();
 		}
 		
+		echo '<form method="post" action="" id="question-form">';
 		foreach($info['intersections'] as $point) {
 			$point->renderCheckbox();
 		}
-		
-		echo '</div>';
+		echo '<input type="hidden" name="clicks" id="clicks-input">';
+		echo '</form>';
 	}
 	
 	public function renderQuestionList() {

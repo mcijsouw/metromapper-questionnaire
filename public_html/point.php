@@ -13,7 +13,7 @@ class Point {
 	}
 	
 	public function render($class) {
-		echo '<div data-id="' . $this->id . '" class="point ' . $class . '" style="left: ' . $this->x . 'px; top: ' . $this->y . 'px"><div class="inner"></div></div>';
+		echo '<div data-id="' . $this->id . '" class="point ' . $class . '" data-x="' . $this->x . '" data-y="' . $this->y . '"><div class="inner"></div></div>';
 	}
 	
 	public function renderIntersection() {
@@ -29,7 +29,7 @@ class Point {
 	}
 	
 	public function renderCheckbox() {
-		echo '<input type="checkbox" name="intersections" value="' . $this->id . '"> ' . $this->id . ' &nbsp; &nbsp; ';
+		echo '<input type="checkbox" class="hidden" name="intersections" value="' . $this->id . '">';
 	}
 	
 }

@@ -5,81 +5,181 @@ a:focus {
 }
 
 /* line 6, ../sass/style.scss */
-body {
-  background: #f7f7f7;
-  text-align: center;
-  padding: 30px 30px 150px 30px;
+html {
+  height: 100%;
+  min-height: 400px;
+  min-width: 700px;
 }
 
 /* line 11, ../sass/style.scss */
-#map-wrapper {
-  position: relative;
-  margin: 0 auto;
-  display: inline-block;
+body {
+  background: #fff;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 51px;
   overflow: hidden;
 }
 
-/* line 17, ../sass/style.scss */
-img.map {
-  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  display: block;
+/* line 19, ../sass/style.scss */
+.navbar {
+  height: 51px;
 }
 
-/* line 21, ../sass/style.scss */
+/* line 22, ../sass/style.scss */
+.navbar-brand {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  float: none;
+  color: #ddd !important;
+}
+
+/* line 30, ../sass/style.scss */
+#map-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding-right: 300px;
+}
+
+/* line 37, ../sass/style.scss */
+img.map {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* line 43, ../sass/style.scss */
+#loader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  padding-right: 300px;
+}
+/* line 51, ../sass/style.scss */
+#loader div {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: relative;
+  background: #fff;
+}
+/* line 57, ../sass/style.scss */
+#loader div i.spinner {
+  position: absolute;
+  z-index: 101;
+  top: 50%;
+  left: 50%;
+  margin-left: -22px;
+  margin-top: -22px;
+  opacity: 0.8;
+  width: 44px;
+  height: 44px;
+  background: url("../img/fancybox_loading.gif") center center no-repeat #000;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 72, ../sass/style.scss */
+.sidebar {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f7f7f7;
+  border-left: 1px solid #eee;
+  padding-top: 10px;
+}
+/* line 81, ../sass/style.scss */
+.sidebar .table {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+/* line 84, ../sass/style.scss */
+.sidebar .table td {
+  width: 50%;
+  text-align: left;
+}
+/* line 87, ../sass/style.scss */
+.sidebar .table td:first-child {
+  padding-left: 20px;
+}
+/* line 92, ../sass/style.scss */
+.sidebar h4 {
+  padding-left: 20px;
+  text-align: left;
+}
+
+/* line 97, ../sass/style.scss */
+.hidden {
+  display: none;
+}
+
+/* line 100, ../sass/style.scss */
 .point {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: -30px 0 0 -30px;
-  padding: 5px;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  padding: 0;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
+  z-index: 50;
 }
-/* line 29, ../sass/style.scss */
+/* line 109, ../sass/style.scss */
 .point:hover .inner {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 31, ../sass/style.scss */
+/* line 111, ../sass/style.scss */
 .point:hover .inner::before, .point:hover .inner::after {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 37, ../sass/style.scss */
-.point.intersection {
+/* line 117, ../sass/style.scss */
+.point.intersection, .point.end {
   cursor: pointer;
 }
-/* line 40, ../sass/style.scss */
+/* line 121, ../sass/style.scss */
 .point.start .inner {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   border-color: #02A600;
   background: rgba(0, 255, 0, 0.1);
 }
-/* line 44, ../sass/style.scss */
+/* line 125, ../sass/style.scss */
 .point.start .inner::before {
   content: "Start";
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   width: 60px;
   margin-left: -30px;
+  background: #017300;
 }
-/* line 50, ../sass/style.scss */
+/* line 132, ../sass/style.scss */
 .point.start .inner::after {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
+  border-top-color: #017300;
 }
-/* line 54, ../sass/style.scss */
+/* line 137, ../sass/style.scss */
 .point.end .inner {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   border-color: #02A600;
   background: rgba(0, 255, 0, 0.1);
 }
-/* line 58, ../sass/style.scss */
+/* line 141, ../sass/style.scss */
 .point.end .inner::before {
   content: "End";
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
@@ -87,27 +187,38 @@ img.map {
   width: 60px;
   margin-left: -30px;
 }
-/* line 64, ../sass/style.scss */
+/* line 147, ../sass/style.scss */
 .point.end .inner::after {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 68, ../sass/style.scss */
+/* line 151, ../sass/style.scss */
+.point.end:hover .inner::before {
+  content: "Finish question";
+  width: 120px;
+  margin-left: -60px;
+  background: #017300;
+}
+/* line 157, ../sass/style.scss */
+.point.end:hover .inner::after {
+  border-top-color: #017300;
+}
+/* line 160, ../sass/style.scss */
 .point.selected .inner {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   border-color: #02A600;
   background: rgba(0, 255, 0, 0.1);
 }
-/* line 72, ../sass/style.scss */
+/* line 164, ../sass/style.scss */
 .point.selected .inner::before {
   content: "Click to deselect";
 }
-/* line 76, ../sass/style.scss */
+/* line 168, ../sass/style.scss */
 .point .inner {
-  height: 50px;
-  border: 5px solid #f00;
-  width: 50px;
+  height: 100%;
+  width: 100%;
+  border: 3px solid #f00;
   background: rgba(255, 0, 0, 0.1);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -119,7 +230,7 @@ img.map {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 84, ../sass/style.scss */
+/* line 176, ../sass/style.scss */
 .point .inner::before {
   content: "Click to select";
   position: absolute;
@@ -145,7 +256,7 @@ img.map {
   pointer-events: none;
   z-index: 100;
 }
-/* line 103, ../sass/style.scss */
+/* line 195, ../sass/style.scss */
 .point .inner::after {
   top: -1px;
   left: 50%;
@@ -167,4 +278,73 @@ img.map {
   transition: opacity 0.3s ease;
   pointer-events: none;
   z-index: 100;
+}
+
+/* line 217, ../sass/style.scss */
+#popup_container {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  min-width: 300px;
+  /* Dialog will be no smaller than this */
+  max-width: 600px;
+  /* Dialog will wrap after this width */
+  background: #FFF;
+  border: solid 5px #999;
+  color: #000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 230, ../sass/style.scss */
+#popup_title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.75em;
+  color: #666;
+  background: #CCC url(../img/title.gif) top repeat-x;
+  border: solid 1px #FFF;
+  border-bottom: solid 1px #999;
+  cursor: default;
+  padding: 0em;
+  margin: 0em;
+}
+
+/* line 244, ../sass/style.scss */
+#popup_content {
+  background: 16px 16px no-repeat url(../img/info.gif);
+  padding: 1em 1.75em;
+  margin: 0em;
+}
+
+/* line 250, ../sass/style.scss */
+#popup_content.alert {
+  background-image: url(../img/info.gif);
+}
+
+/* line 254, ../sass/style.scss */
+#popup_content.confirm {
+  background-image: url(../img/important.gif);
+}
+
+/* line 258, ../sass/style.scss */
+#popup_content.prompt {
+  background-image: url(../img/help.gif);
+}
+
+/* line 262, ../sass/style.scss */
+#popup_message {
+  padding-left: 48px;
+}
+
+/* line 266, ../sass/style.scss */
+#popup_panel {
+  text-align: center;
+  margin: 1em 0em 0em 1em;
+}
+
+/* line 271, ../sass/style.scss */
+#popup_prompt {
+  margin: .5em 0em;
 }
