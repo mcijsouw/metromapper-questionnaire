@@ -29,7 +29,7 @@ class Point {
 	}
 	
 	public function renderCheckbox() {
-		echo '<input type="checkbox" class="hidden" name="intersections" value="' . $this->id . '">';
+		echo '<input type="checkbox" class="hidden" name="intersections[]" value="' . htmlentities($this->id, ENT_SUBSTITUTE, 'ISO-8859-1') . '">';
 	}
 	
 }

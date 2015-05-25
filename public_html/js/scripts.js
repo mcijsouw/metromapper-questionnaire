@@ -4,7 +4,6 @@
 		/* Timer variables*/
 		var currentTime = 0;
 		var incrementTime = 70;
-		var totalTimeOffset = 342.58 * 1000; // @todo cookie time?
 		var form = $('#question-form');
 		var clicks = '';
 		var clicksInput = $('#clicks-input');
