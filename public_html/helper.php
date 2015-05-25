@@ -26,6 +26,9 @@ class Helper {
 			$clicks = filter_input(INPUT_POST, 'clicks', FILTER_SANITIZE_STRING);
 
 			$info = require dirname(__FILE__) . '/maps/' . $id . '/info.php';
+			$schematization = $info['schematization'];
+			$visualization = $info['visualization'];
+			$arrowhints = $info['arrowhints'];
 			$answer = $info['answer'];
 
 
@@ -63,6 +66,9 @@ class Helper {
 				'is_correct' => ($correct ? 1 : 0),
 				'events' => $clicks,
 				'sessid' => $sessid,
+				'schematization' => $schematization,
+				'visualization' => $visualization,
+				'arrowhints' => ($arrowhints ? 1 : 0),
 			);
 			$insert = $this->db->insert('answers', $data);
 			if ($insert == false) {
