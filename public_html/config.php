@@ -9,4 +9,8 @@ class Config {
 	public $pass = '';
 	public $db = 'metromapper';
 	
+	public $title = 'MetroMapper Questionnaire | Master Project by Michel Cijsouw | Eindhoven University of Technology';
+	
+	public $amountOfQuestions = 20;
+	
 }
