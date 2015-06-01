@@ -8,6 +8,8 @@ class Helper {
 	/** @var Config */
 	private $config;
 	
+	private $ip = '';
+	
 	public function __construct()
 	{
 		require_once 'MysqliDb.php';
@@ -15,6 +17,11 @@ class Helper {
 
 		$this->config = new Config();
 		$this->db = new MysqliDb($this->config->host, $this->config->user, $this->config->pass, $this->config->db, null, 'ISO-8859-1');
+		
+		if(!empty($_SERVER['REMOTE_ADDR'])) {
+			$this->ip = $_SERVER['REMOTE_ADDR'];
+		}
+		
 	}
 	
 	public function handleFinalPost()
@@ -32,7 +39,8 @@ class Helper {
 				'age' => $age,
 				'education' => $education,
 				'familiar' => $familiar,
-				'comments' => $comments,				
+				'comments' => $comments,
+				'ipaddress' => $this->ip,
 			);
 			$insert = $this->db->insert('final', $data);
 			if ($insert == false) {
@@ -102,12 +110,14 @@ class Helper {
 				'schematization' => $schematization,
 				'visualization' => $visualization,
 				'arrowhints' => ($arrowhints ? 1 : 0),
+				'ipaddress' => $this->ip,
 			);
 			$insert = $this->db->insert('answers', $data);
 			if ($insert == false) {
-				
 				die('Something went wrong when saving the data to the database...');
 			}
+			
+			$updateCount = $this->db->rawQuery("UPDATE questions q SET q.count = (q.count + 1) WHERE q.mapid = ? LIMIT 1", array($id));
 
 			if (empty($_SESSION['totalTime'])) {
 				$_SESSION['totalTime'] = 0;
@@ -157,7 +167,6 @@ class Helper {
 			$_SESSION['currentQuestion'] = 1;
 		}
 		$currentQuestion = $_SESSION['currentQuestion'];
-
 		if (false == array_key_exists($currentQuestion, $_SESSION['questions'])) {
 			die('Out of questions... (delete session cookies and try again)');
 		}

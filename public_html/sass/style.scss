@@ -48,11 +48,15 @@ body {
 		height: 100%;
 	}
 }
+#compatibility-test {
+	position: relative;
+	overflow: hidden;
+}
 img.map {
 	display: block;
 	max-height: 100%;
 	max-width: 100%;
-	margin: 0 auto;
+	@include box-shadow(0 0 5px #ddd);
 }
 body.questionnaire img.map {
 	@include opacity(0);
@@ -172,7 +176,7 @@ body.questionnaire img.map.show {
 		text-align: left;
 	}
 	p.string {
-		padding-left: 20px;
+		padding: 0 20px;
 		text-align: left;
 		margin-bottom: 40px;
 	}

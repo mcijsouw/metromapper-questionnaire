@@ -89,19 +89,24 @@
 			var orgMapWidth = map.attr('data-orgwidth');
 			var orgMapHeight = map.attr('data-orgheight');
 			$(window).resize(function () {
-				var mapLeft = map.position().left;
-				var mapTop = map.position().top;
+				var containerWidth = map.parent().width();
 				var mapWidth = map.width();
-				var mapHeight = map.height();
 				var scale = (mapWidth / orgMapWidth);
 				var transformScale = Math.min(scale + 0.4, 1);
+				var mapLeft = (containerWidth - mapWidth) / 2;
+				map.css('margin-left', mapLeft + 'px');
 				points.each(function () {
-					var x = $(this).attr('data-x');
-					var y = $(this).attr('data-y');
+					var x = parseInt($(this).attr('data-x'));
+					var y = parseInt($(this).attr('data-y'));
 					$(this).css('left', (mapLeft + x * scale) + 'px');
-					$(this).css('top', (mapTop + y * scale) + 'px');
+					$(this).css('top', (y * scale) + 'px');
 					$(this).css('transform', 'scale(' + transformScale + ')');
 					$(this).css('-webkit-transform', 'scale(' + transformScale + ')');
+					
+					if(x < 0 || x > orgMapWidth || y < 0 || y > orgMapHeight) {
+						$(this).hide();
+					}
+					
 				});
 			});
 		}

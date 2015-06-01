@@ -23,6 +23,7 @@ if ($handle = opendir($path)) {
 	closedir($handle);
 }
 
+$overallTotal = 0;
 echo '<table border="1" cellpadding="10" cellspacing="0">';
 foreach($infos as $key => $value) {
 	$maps = '';
@@ -32,9 +33,12 @@ foreach($infos as $key => $value) {
 		$maps .= $map . '<br>';
 		$counts .= $count . '<br>';
 		$total += $count;
+		$overallTotal += $count;
 	}
 	$maps .= '<strong>Total</strong>';
 	$counts .= '<strong>' . $total . '</strong>';
 	echo '<tr><td valign="top">' . $key . '</td><td>' . $maps . '</td><td>' . $counts . '</td></tr>';
 }
 echo '</table>';
+
+echo '<br>Total amount of different maps: ' . $overallTotal . '<br><br>';
