@@ -154,7 +154,11 @@ class Helper {
 
 		if (empty($_SESSION['questions'])) {
 			$_SESSION['questions'] = array();
-			$query = "SELECT * FROM questions ORDER BY `count` ASC, RAND() LIMIT 0, " . $amount;
+			$query = "SELECT *
+						FROM ( SELECT q.* FROM questions q ORDER BY `count` ASC, RAND()) AS q2
+						GROUP BY q2.identifier
+						ORDER BY RAND()
+						LIMIT 0," . $amount;
 			$list = $this->db->query($query);
 			$i = 1;
 			foreach ($list as $obj) {
@@ -168,7 +172,7 @@ class Helper {
 		}
 		$currentQuestion = $_SESSION['currentQuestion'];
 		if (false == array_key_exists($currentQuestion, $_SESSION['questions'])) {
-			die('Out of questions... (delete session cookies and try again)');
+			die('Out of questions...');
 		}
 		
 		$id = $this->slugify($_SESSION['questions'][$currentQuestion]);

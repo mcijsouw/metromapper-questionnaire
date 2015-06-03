@@ -1,0 +1,32 @@
+<?php
+return array(
+	'map' => 'Sydney-raw.graphml',
+	'start' => new Point('start', 877, 391),
+	'end' => new Point('end', 191, 434),
+	'intersections' => array(
+		new Point('Merrylands', 148, 220),
+		new Point('Harris Park', 191, 177),
+		new Point('Hornsby', 405, -422),
+		new Point('Cabramatta', -65, 434),
+		new Point('Sydenham', 748, 520),
+		new Point('Blacktown', -22, -122),
+		new Point('Glenfield', -237, 606),
+		new Point('Lidcombe', 320, 306),
+		new Point('Town Hall', 962, 348),
+		new Point('Clyde', 234, 263),
+		new Point('Granville', 191, 220),
+		new Point('Sutherland', 191, 1034),
+		new Point('Central', 920, 391),
+		new Point('d0', 1048, 306),
+		new Point('Wynyard', 962, 306),
+		new Point('Strathfield', 448, 306),
+		new Point('Wolli Creek', 662, 606),
+	),
+	'answer' => array(
+		'Sydenham',
+	),
+	'schematization' => 'raw',
+	'visualization' => 'fixed source based',
+	'arrowhints' => false,
+	'averageEdgeTime' => 158,
+);

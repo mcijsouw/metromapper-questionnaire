@@ -12,11 +12,11 @@ if ($handle = opendir($path)) {
 		if ($entry != "." && $entry != "..") {
 			if(is_dir($path . '/' . $entry)) {
 				$info = require $path . '/' . $entry . '/info.php';
-				$key = ucfirst($info['schematization']) . '<br>' . ucfirst($info['visualization']) . '<br>' . ($info['arrowhints'] ? 'With arrow hints' : 'Without arrow hints');
+				$key = ucfirst($info['visualization']) . '<br>' . ($info['arrowhints'] ? 'With arrow hints' : 'Without arrow hints');
 				if(false == array_key_exists($key, $infos)) {
 					$infos[$key] = array();
 				}
-				$infos[$key][] = $info['map'];
+				$infos[$key][] = substr($info['map'], 0, 6);
 			}
 		}
 	}
